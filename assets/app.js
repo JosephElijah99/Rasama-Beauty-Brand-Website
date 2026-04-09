@@ -14,8 +14,8 @@ const PRODUCTS=[
 /* ── SETTINGS (loaded from localStorage if saved) ── */
 let CFG = JSON.parse(localStorage.getItem('rasama_cfg') || 'null') || {
   pk:'pk_test_demo_rasama_beauty_2024',
-  wa:'+2348000000001',
-  email:'admin@rasamabeauty.com',
+  wa:'+2347057937555',
+  email:'rasamiskincare@outlook.com',
   name:'RASAMA Beauty Natural Skincare'
 };
 
