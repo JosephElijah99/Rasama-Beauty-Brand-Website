@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs – RASAMA Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.faq-outer{max-width:780px;margin:0 auto;padding:3.5rem 2.5rem}
+.faq-cats{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.fcb{background:transparent;border:1px solid var(--ivd);padding:7px 18px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--tmu);transition:all .2s;font-family:'Jost',sans-serif;cursor:pointer}
+.fcb.active,.fcb:hover{background:var(--gd);color:var(--iv);border-color:var(--gd)}
+.faq-item{border-bottom:1px solid var(--ivd)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;background:none;border:none;font-family:'Jost',sans-serif;font-size:14px;color:var(--td);text-align:left;cursor:pointer;gap:1rem}
+.faq-q:hover{color:var(--gd)}
+.fq-icon{font-size:18px;color:var(--gold);transition:transform .25s;flex-shrink:0}
+.faq-q.open .fq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a.open{max-height:400px;padding-bottom:1.25rem}
+.faq-a p{font-size:13px;color:var(--tmu);line-height:1.9;font-weight:300}
+.faq-still{background:var(--gd);padding:2rem;text-align:center;margin-top:2.5rem}
+.faq-still h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--iv);margin-bottom:.5rem}
+.faq-still p{font-size:12px;color:var(--gmt);margin-bottom:1.25rem;font-weight:300}
+.faq-still-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+@media(max-width:768px){.faq-outer{padding:2rem 1rem}}
+</style>
+</head>
+<body>
+<div class="page-banner">
+  <p class="page-banner-tag">Help Centre</p>
+  <h1>Frequently Asked<br>Questions</h1>
+  <p>Everything you need to know about our products, orders, and policies.</p>
+</div>
+<div class="faq-outer">
+  <div class="faq-cats" id="faqCats"></div>
+  <div id="faqList"></div>
+  <div class="faq-still">
+    <h3>Still have a question?</h3>
+    <p>Our support team is ready to help you instantly on WhatsApp or by email.</p>
+    <div class="faq-still-btns">
+      <button class="btn-gold" onclick="openWhatsApp('Hello! I have a question about RASAMA Beauty.')">💬 WhatsApp Us</button>
+      <a class="btn-ghost" href="contact.html">✉️ Send an Email</a>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+const FAQS=[
+  {cat:'Orders',q:'How do I place an order?',a:'Browse our Shop page, add products to your cart, then click "Proceed to Checkout". Fill in your details and pay securely via Paystack. You\'ll receive a confirmation email immediately.'},
+  {cat:'Orders',q:'Can I modify or cancel my order?',a:'Orders can be modified or cancelled within 2 hours of placing them. Please contact us immediately via WhatsApp or email at hello@rasamabeauty.com.'},
+  {cat:'Orders',q:'Is my payment secure?',a:'Yes. All payments are processed by Paystack — Nigeria\'s most trusted payment infrastructure. We never store your card details.'},
+  {cat:'Delivery',q:'Which states do you deliver to?',a:'We deliver to all 36 states and the FCT across Nigeria. Delivery typically takes 2–5 business days. Same-day delivery may be available in Kano.'},
+  {cat:'Delivery',q:'How much does delivery cost?',a:'Standard delivery is ₦1,500 nationwide. Orders above ₦25,000 qualify for free delivery. Express next-day delivery is available in Kano at ₦2,500.'},
+  {cat:'Delivery',q:'How do I track my order?',a:'Once your order ships, you\'ll receive an SMS and email with your tracking number. You can also WhatsApp us your order ID for a live update.'},
+  {cat:'Products',q:'Are your products suitable for sensitive skin?',a:'Yes. All RASAMA Beauty products are formulated without parabens, sulfates, artificial fragrances, or harsh chemicals. We recommend a patch test if you have known sensitivities.'},
+  {cat:'Products',q:'Are your products dermatologist tested?',a:'Yes. All formulations have been dermatologist reviewed and tested for safety on a diverse range of skin types, including melanin-rich skin.'},
+  {cat:'Products',q:'How long do products last once opened?',a:'Most products have a 12-month Period After Opening (PAO), indicated on packaging. Store in a cool, dry place away from direct sunlight.'},
+  {cat:'Returns',q:'What is your return policy?',a:'We offer a 14-day return policy on unopened products in their original packaging. If a product arrives damaged, we will replace it free — send us a photo via WhatsApp within 48 hours.'},
+  {cat:'Returns',q:'What if my product arrives damaged?',a:'Please take a photo and send it via WhatsApp or email within 48 hours. We will arrange an immediate replacement at no extra cost.'},
+  {cat:'Wholesale',q:'Do you offer wholesale pricing?',a:'Yes! We work with salons, spas, beauty retailers, and resellers across Nigeria. WhatsApp or email us with your business details and we\'ll send our wholesale catalogue.'},
+];
+const FAQ_CATS=['All','Orders','Delivery','Products','Returns','Wholesale'];
+let activeCat='All';
+
+renderNav(); renderFooter(); injectCartAndModal(); updateCartUI();
+
+function renderFAQ(){
+  document.getElementById('faqCats').innerHTML=FAQ_CATS.map(c=>
+    `<button class="fcb${c===activeCat?' active':''}" onclick="setCat('${c}',this)">${c}</button>`).join('');
+  const list=activeCat==='All'?FAQS:FAQS.filter(f=>f.cat===activeCat);
+  document.getElementById('faqList').innerHTML=list.map(f=>`
+    <div class="faq-item">
+      <button class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <span style="flex:1;text-align:left">${f.q}</span>
+        <span class="fq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`).join('');
+}
+function setCat(cat,btn){
+  activeCat=cat;
+  document.querySelectorAll('.fcb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFAQ();
+}
+renderFAQ();
+</script>
+</body>
+</html>

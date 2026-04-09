@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – RASAMA Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.about-wrap{max-width:1100px;margin:0 auto;padding:3.5rem 2.5rem}
+.about-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:4rem}
+.about-visual{background:linear-gradient(145deg,var(--gd),var(--gm));height:380px;display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden}
+.about-visual::before{content:'RASAMA';position:absolute;font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(255,255,255,.06);letter-spacing:8px;text-transform:uppercase}
+.about-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;font-weight:400}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--gd);line-height:1.2;margin-bottom:1rem}
+.about-text h2 em{color:var(--gold);font-style:italic}
+.about-text p{font-size:13px;color:var(--tm);line-height:1.95;margin-bottom:1rem;font-weight:300}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem;margin-bottom:4rem}
+.val-card{background:var(--white);border:1px solid var(--ivd);padding:1.5rem}
+.val-icon{font-size:28px;margin-bottom:.75rem}
+.val-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--gd);margin-bottom:.5rem}
+.val-card p{font-size:12px;color:var(--tmu);line-height:1.8;font-weight:300}
+.team-section{margin-bottom:2rem}
+.team-section h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gd);text-align:center;margin-bottom:.5rem}
+.team-sub{font-size:12px;color:var(--tmu);text-align:center;margin-bottom:2rem;letter-spacing:1px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
+.team-card{text-align:center}
+.team-avatar{width:80px;height:80px;background:linear-gradient(135deg,var(--gd),var(--gs));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto .75rem}
+.team-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--gd)}
+.team-card p{font-size:11px;color:var(--tmu);margin-top:3px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.about-intro{grid-template-columns:1fr}.about-wrap{padding:2rem 1rem}}
+</style>
+</head>
+<body>
+<div class="page-banner">
+  <p class="page-banner-tag">Our Story</p>
+  <h1>Born from Nature,<br>Made for You</h1>
+  <p>The journey behind RASAMA Beauty and the values that shape every formula we create.</p>
+</div>
+<div class="about-wrap">
+  <div class="about-intro reveal">
+    <div class="about-visual">🌿</div>
+    <div class="about-text">
+      <p class="about-tag">Who We Are</p>
+      <h2>Beauty rooted in <em>African nature</em></h2>
+      <p>RASAMA Beauty Natural Skincare was born from a deep love for Africa's extraordinary botanical heritage. We believe that the continent's richest ingredient — its nature — holds the key to radiant, healthy skin for every African woman and man.</p>
+      <p>Our formulas are crafted with purpose: no harmful chemicals, no empty promises. Every product is a carefully balanced blend of natural botanical actives sourced across Africa, designed to work in harmony with melanin-rich skin.</p>
+      <p>From raw shea butter sourced from northern Nigeria to rosehip oil from partner farmers, every ingredient carries a story of sustainability, community, and care.</p>
+      <a class="btn-green" href="index.html">Shop the Collection</a>
+    </div>
+  </div>
+  <div class="sec-head reveal"><h2>Our Values</h2><p>What we stand for in every product</p></div>
+  <div class="values-grid">
+    <div class="val-card reveal"><div class="val-icon">🌱</div><h3>100% Natural</h3><p>Every ingredient is plant-derived and ethically sourced. No parabens, sulfates, or synthetic fragrances.</p></div>
+    <div class="val-card reveal"><div class="val-icon">🌍</div><h3>Made for African Skin</h3><p>Formulas specifically developed for melanin-rich skin — addressing hyperpigmentation, uneven tone and dryness.</p></div>
+    <div class="val-card reveal"><div class="val-icon">♻️</div><h3>Sustainable Packaging</h3><p>We use recyclable and biodegradable materials to minimise our environmental footprint.</p></div>
+    <div class="val-card reveal"><div class="val-icon">🤝</div><h3>Community First</h3><p>We partner with local farmers and cooperatives across Nigeria, supporting livelihoods at the source.</p></div>
+    <div class="val-card reveal"><div class="val-icon">🔬</div><h3>Dermatologist Tested</h3><p>All products are tested for safety and efficacy before reaching your skin. Science meets nature.</p></div>
+    <div class="val-card reveal"><div class="val-icon">💎</div><h3>Luxury Accessible</h3><p>Premium skincare shouldn't be a privilege. RASAMA makes luxury botanicals available at honest prices.</p></div>
+  </div>
+  <div class="team-section reveal">
+    <h2>The Hands Behind RASAMA</h2>
+    <p class="team-sub">The people who formulate, care and deliver for you</p>
+    <div class="team-grid">
+      <div class="team-card"><div class="team-avatar">👩🏾</div><h4>Aisha Suleiman</h4><p>Founder & Chief Formulator</p></div>
+      <div class="team-card"><div class="team-avatar">👨🏿</div><h4>Emeka Okonkwo</h4><p>Head of Operations</p></div>
+      <div class="team-card"><div class="team-avatar">👩🏽</div><h4>Fatima Bello</h4><p>Skincare Consultant</p></div>
+      <div class="team-card"><div class="team-avatar">👨🏾</div><h4>Chidi Nwosu</h4><p>Quality Assurance Lead</p></div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+renderNav(); renderFooter(); injectCartAndModal(); updateCartUI();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

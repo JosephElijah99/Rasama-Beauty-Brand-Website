@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – RASAMA Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.contact-outer{max-width:1000px;margin:0 auto;padding:3.5rem 2.5rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:3.5rem}
+.contact-info h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--gd);margin-bottom:.75rem}
+.contact-info p{font-size:13px;color:var(--tm);line-height:1.9;margin-bottom:1.5rem;font-weight:300}
+.c-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:1.25rem}
+.c-icon{width:40px;height:40px;background:var(--gd);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.c-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--tmu);margin-bottom:3px}
+.c-val{font-size:13px;color:var(--td)}
+.wa-big-btn{display:flex;align-items:center;gap:10px;background:var(--wa);color:var(--white);border:none;padding:13px 24px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:background .2s;margin-top:1.5rem;width:100%;justify-content:center;cursor:pointer}
+.wa-big-btn:hover{background:var(--wa-dark)}
+.wa-big-btn svg{width:20px;height:20px;fill:var(--white)}
+.cform-box{background:var(--white);border:1px solid var(--ivd);padding:2rem}
+.cform-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--gd);margin-bottom:1.25rem}
+.cf-inp{width:100%;padding:10px 12px;border:1px solid var(--ivd);background:var(--iv);font-family:'Jost',sans-serif;font-size:13px;color:var(--td);outline:none;transition:border-color .2s;margin-bottom:1rem}
+.cf-inp:focus{border-color:var(--gs)}
+textarea.cf-inp{height:120px;resize:vertical}
+.cf-sent{display:none;background:var(--ivw);border:1px solid var(--gmt);padding:1.25rem;text-align:center;margin-top:1rem}
+.cf-sent.show{display:block}
+.cf-sent p{font-size:13px;color:var(--gd)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}.contact-outer{padding:2rem 1rem}}
+</style>
+</head>
+<body>
+<div class="page-banner">
+  <p class="page-banner-tag">Get in Touch</p>
+  <h1>We'd Love to<br>Hear From You</h1>
+  <p>Questions about your order, a product, or anything else — we're here.</p>
+</div>
+<div class="contact-outer">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>Contact RASAMA Beauty</h2>
+      <p>Our team is available Monday to Saturday, 8am – 6pm. For the fastest response, reach us instantly on WhatsApp.</p>
+      <div class="c-item"><div class="c-icon">📍</div><div><div class="c-lbl">Location</div><div class="c-val">Kano, Nigeria</div></div></div>
+      <div class="c-item"><div class="c-icon">📞</div><div><div class="c-lbl">Phone</div><div class="c-val">+234 800 RASAMA 1</div></div></div>
+      <div class="c-item"><div class="c-icon">✉️</div><div><div class="c-lbl">Email</div><div class="c-val">hello@rasamabeauty.com</div></div></div>
+      <div class="c-item"><div class="c-icon">🕐</div><div><div class="c-lbl">Hours</div><div class="c-val">Mon – Sat · 8:00am – 6:00pm</div></div></div>
+      <button class="wa-big-btn" onclick="openWhatsApp('Hello! I have a question about RASAMA Beauty.')">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.854L0 24l6.335-1.507A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.874 9.874 0 01-5.031-1.378l-.36-.214-3.732.888.917-3.636-.235-.374A9.861 9.861 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>
+        Chat on WhatsApp Now
+      </button>
+    </div>
+    <div class="cform-box">
+      <h3>Send Us a Message</h3>
+      <div id="contactFormArea">
+        <div class="form-row2" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div><label class="form-lbl">First Name</label><input class="cf-inp" id="cf-fname" placeholder="Amara"></div>
+          <div><label class="form-lbl">Last Name</label><input class="cf-inp" id="cf-lname" placeholder="Okafor"></div>
+        </div>
+        <label class="form-lbl">Email</label>
+        <input class="cf-inp" id="cf-email" type="email" placeholder="you@example.com">
+        <label class="form-lbl">Subject</label>
+        <select class="cf-inp" id="cf-subject">
+          <option>Select a subject</option>
+          <option>Order & Delivery Enquiry</option>
+          <option>Product Question</option>
+          <option>Returns & Refunds</option>
+          <option>Wholesale / Partnership</option>
+          <option>Something else</option>
+        </select>
+        <label class="form-lbl">Message</label>
+        <textarea class="cf-inp" id="cf-msg" placeholder="Tell us how we can help..."></textarea>
+        <button class="btn-green" style="width:100%;padding:13px" onclick="submitContact()">Send Message</button>
+      </div>
+      <div class="cf-sent" id="cfSent"><p>✅ &nbsp;Thank you! We'll get back to you within 24 hours.</p></div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+<script>
+renderNav(); renderFooter(); injectCartAndModal(); updateCartUI();
+function submitContact(){
+  const fn=document.getElementById('cf-fname').value.trim();
+  const em=document.getElementById('cf-email').value.trim();
+  const mg=document.getElementById('cf-msg').value.trim();
+  if(!fn||!em||!mg){showToast('Please fill all fields');return;}
+  document.getElementById('cfSent').classList.add('show');
+  document.getElementById('contactFormArea').style.opacity='.4';
+  showToast('Message sent ✓');
+}
+</script>
+</body>
+</html>

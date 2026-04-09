@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog – RASAMA Beauty</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.blog-wrap{max-width:1100px;margin:0 auto;padding:3.5rem 2.5rem}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+.blog-card{background:var(--white);border:1px solid var(--ivd);overflow:hidden;transition:transform .25s,box-shadow .25s;cursor:pointer}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,58,42,.1)}
+.blog-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+.blog-cat-tag{position:absolute;bottom:12px;left:12px;background:var(--gd);color:var(--iv);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px}
+.blog-body{padding:1.25rem}
+.blog-meta{font-size:10px;color:var(--tmu);letter-spacing:1px;margin-bottom:.5rem}
+.blog-body h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--td);margin-bottom:.5rem;line-height:1.3}
+.blog-body p{font-size:12px;color:var(--tmu);line-height:1.75;margin-bottom:1rem;font-weight:300}
+.read-more{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gd);font-weight:500;border-bottom:1px solid var(--ivd);padding-bottom:2px;background:none;border-top:none;border-left:none;border-right:none;cursor:pointer}
+.read-more:hover{border-color:var(--gd)}
+/* ARTICLE VIEW */
+#articleView{display:none;padding:3rem 2.5rem;max-width:760px;margin:0 auto}
+#articleView.open{display:block}
+.article-back{background:none;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gd);cursor:pointer;margin-bottom:1.5rem;display:flex;align-items:center;gap:6px}
+.article-cat{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.article-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:var(--gd);line-height:1.2;margin-bottom:.75rem}
+.article-meta{font-size:11px;color:var(--tmu);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--ivd)}
+.article-body p{font-size:14px;color:var(--tm);line-height:2;margin-bottom:1.5rem;font-weight:300}
+.article-body h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--gd);margin:2rem 0 .75rem}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.blog-wrap,#articleView{padding:2rem 1rem}}
+</style>
+</head>
+<body>
+<div id="listView">
+  <div class="page-banner">
+    <p class="page-banner-tag">Skincare Journal</p>
+    <h1>Beauty Wisdom,<br>African Roots</h1>
+    <p>Expert tips, ingredient deep-dives, and skincare rituals curated for you.</p>
+  </div>
+  <div class="blog-wrap">
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</div>
+<div id="articleView"></div>
+
+<script src="assets/app.js"></script>
+<script>
+const BLOGS=[
+  {id:1,emoji:"🌹",bg:"#f0ead8",cat:"Ingredient Spotlight",date:"Dec 12, 2024",title:"Why Rosehip Oil is the Gold Standard for African Skin",excerpt:"Packed with vitamins A, C & E, rosehip oil has been used for centuries to reduce hyperpigmentation and restore radiance to melanin-rich skin.",body:`<p>Rosehip oil — extracted from the seeds of Rosa canina — has earned its reputation as one of skincare's most potent botanical actives. For African skin in particular, its benefits go far beyond simple moisturisation.</p><h3>Rich in Vitamin A</h3><p>Unlike synthetic retinoids, rosehip oil delivers vitamin A in a gentle, natural form that works gradually to renew skin cells, fade dark spots, and improve skin texture without irritation.</p><h3>Fighting Hyperpigmentation</h3><p>Melanin-rich skin is more prone to post-inflammatory hyperpigmentation. Rosehip's vitamin C content inhibits melanin overproduction, while its linoleic acid restores barrier function to prevent future discolouration.</p><h3>How to Use It</h3><p>Apply 3–5 drops to clean, slightly damp skin before your moisturiser, morning and evening. Combine with our Turmeric Radiance Oil for a powerful brightening duo.</p>`},
+  {id:2,emoji:"☀️",bg:"#fdf5e4",cat:"Skincare Tips",date:"Dec 5, 2024",title:"SPF for Dark Skin: The Myths We Need to Bust",excerpt:"The dangerous myth that dark skin doesn't need sunscreen has caused real harm. Here's the science, the truth, and the right way to protect your skin.",body:`<p>One of the most persistent — and damaging — myths in skincare is that dark skin doesn't need sun protection. This is completely false.</p><h3>All Skin Tones Are Damaged by UV</h3><p>While melanin does provide some natural protection (roughly SPF 13), it does not eliminate the risk of UV damage. Dark skin is just as vulnerable to photoageing, uneven pigmentation, and skin cancer.</p><h3>The White Cast Problem</h3><p>Most sunscreens leave a visible white cast on darker skin. This is why we formulated our SPF 50 Glow Sunscreen specifically for melanin-rich skin — completely invisible finish, no white cast.</p><h3>Apply It Every Day</h3><p>Apply SPF 50 every morning as the final step of your skincare routine, even on cloudy days and indoors near windows.</p>`},
+  {id:3,emoji:"🌿",bg:"#eaf5ee",cat:"Skincare Routine",date:"Nov 28, 2024",title:"The Perfect 5-Step RASAMA Evening Routine",excerpt:"Night time is when your skin repairs and regenerates. Here's how to build the perfect evening routine using RASAMA products.",body:`<p>Your skin does most of its repair work while you sleep. The right evening routine can dramatically improve your skin's texture, tone, and overall health.</p><h3>Step 1: Cleanse</h3><p>Apply Aloe Vera Gentle Cleanser to dry skin first to dissolve SPF and makeup, then re-apply on wet skin. Rinse with lukewarm water.</p><h3>Step 2: Tone</h3><p>Apply Green Tea Balancing Toner with a cotton pad. This restores pH balance and prepares skin to absorb actives.</p><h3>Step 3: Treat</h3><p>Apply 4–5 drops of Rosehip Glow Serum or Turmeric Radiance Oil. Press gently into skin.</p><h3>Step 4: Moisturise</h3><p>Warm Shea Butter Night Cream between your palms and press into face and neck.</p><h3>Step 5: Eye Area</h3><p>Use your ring finger to gently tap a small amount of Night Cream around the eye area.</p>`},
+  {id:4,emoji:"🫧",bg:"#e8f0ec",cat:"Ingredients",date:"Nov 20, 2024",title:"Shea Butter: Africa's Ancient Skincare Secret",excerpt:"Used for centuries across West Africa, shea butter is one of the world's most effective natural moisturisers.",body:`<p>Long before modern cosmetic laboratories existed, West African women were using shea butter to nourish their skin in the harsh Sahelian climate.</p><h3>Why It Works</h3><p>Shea butter's fatty acid profile — predominantly oleic acid (40–60%) and stearic acid (20–50%) — allows it to penetrate beyond the skin's surface barrier, delivering deep moisture.</p><h3>Anti-Inflammatory Properties</h3><p>Shea contains triterpene alcohols with anti-inflammatory properties, making it effective for eczema, dermatitis, and the dry skin harmattan season causes.</p><h3>Why We Use Raw Shea</h3><p>Refined shea strips most active compounds. Our Night Cream uses cold-pressed, unrefined shea from cooperatives in Kano State — preserving 100% of its nutritional integrity.</p>`},
+  {id:5,emoji:"🏺",bg:"#ece8f0",cat:"How-To",date:"Nov 12, 2024",title:"How to Use a Clay Mask the Right Way",excerpt:"Most people use clay masks incorrectly. Here's the correct technique for maximum results without damaging your skin barrier.",body:`<p>Clay masks are highly effective for deep-cleansing and pore-minimising — but only when used correctly.</p><h3>How Often</h3><p>1–2 times per week for most skin types. Over-masking can strip natural oils and cause rebound oil production.</p><h3>Application</h3><p>Apply a thin, even layer to clean skin — avoid the eye and lip area. The layer should be thin enough that you can still see your skin tone beneath it.</p><h3>Critical Timing</h3><p>Remove while still slightly damp — usually 10–12 minutes. A fully dried mask draws moisture from your skin cells, causing dryness and irritation.</p><h3>Follow with Moisture</h3><p>After rinsing, immediately apply toner and moisturiser. Post-mask skin is highly receptive to actives.</p>`},
+  {id:6,emoji:"🌴",bg:"#f0ead8",cat:"African Botanicals",date:"Nov 4, 2024",title:"Baobab: The Tree of Life and Your Skin",excerpt:"The baobab tree has nourished African communities for millennia. Its oil is one of nature's richest sources of omega fatty acids.",body:`<p>Known as the "Tree of Life" across sub-Saharan Africa, the baobab (Adansonia digitata) has been a source of food, medicine, and cosmetics for over 6,000 years.</p><h3>Omega Fatty Acid Powerhouse</h3><p>Baobab oil is rich in omega-3, omega-6, and omega-9 acids in near-perfect proportions — mirroring the composition of the skin's own natural sebum, making it extraordinarily compatible with human skin.</p><h3>Fast Absorption</h3><p>Despite its nourishing properties, baobab oil is lightweight and absorbs almost instantly without leaving a greasy residue. Perfect for Nigerian skin that needs moisture without heaviness.</p><h3>Our Baobab Body Butter</h3><p>We combine unrefined baobab oil with raw shea butter and vitamin E — apply to damp skin after bathing for best absorption.</p>`},
+];
+
+renderNav(); renderFooter(); injectCartAndModal(); updateCartUI();
+
+document.getElementById('blogGrid').innerHTML = BLOGS.map(b=>`
+  <div class="blog-card reveal" onclick="openArticle(${b.id})">
+    <div class="blog-img" style="background:${b.bg}">
+      <span>${b.emoji}</span>
+      <div class="blog-cat-tag">${b.cat}</div>
+    </div>
+    <div class="blog-body">
+      <div class="blog-meta">${b.date}</div>
+      <h3>${b.title}</h3>
+      <p>${b.excerpt}</p>
+      <button class="read-more">Read Article →</button>
+    </div>
+  </div>`).join('');
+
+function openArticle(id){
+  const b=BLOGS.find(x=>x.id===id); if(!b) return;
+  document.getElementById('listView').style.display='none';
+  const av=document.getElementById('articleView');
+  av.classList.add('open');
+  av.innerHTML=`
+    <button class="article-back" onclick="closeArticle()">← Back to Journal</button>
+    <div class="article-cat">${b.cat}</div>
+    <h1 class="article-title">${b.title}</h1>
+    <div class="article-meta">${b.date} · RASAMA Beauty Editorial</div>
+    <div class="article-body">${b.body}</div>`;
+  window.scrollTo(0,0);
+}
+function closeArticle(){
+  document.getElementById('listView').style.display='block';
+  const av=document.getElementById('articleView');
+  av.classList.remove('open'); av.innerHTML='';
+}
+
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
